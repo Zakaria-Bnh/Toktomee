@@ -1,9 +1,14 @@
-import Image from "next/image";
+import Navbar from "@/components/Navbar";
 
 export default function Home() {
   return (
-   <main className='min-h-100vh'>
-    <h1 className='text-2xl grid place-items-center '>hello</h1>
-   </main>
+    <div className="bg-primary min-h-screen">
+      <div className="container"> 
+      <header>
+        <Navbar />
+      </header>
+      </div>
+
+    </div>
   );
 }
