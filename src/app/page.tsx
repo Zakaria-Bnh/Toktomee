@@ -1,14 +1,13 @@
-import Navbar from "@/components/Navbar";
+import UserProfileinfo from "@/components/UserProfileinfo";
+import CommunicationPanel from "@/components/CommunicationPanel";
 
 export default function Home() {
   return (
-    <div className="bg-primary min-h-screen">
-      <div className="container"> 
-      <header>
-        <Navbar />
-      </header>
+    <section className="text-white my-16">
+      <div className="md:max-w-[600px] mx-auto flex flex-col gap-6 ">
+        <UserProfileinfo />
+        <CommunicationPanel />
       </div>
-
-    </div>
+    </section>
   );
 }

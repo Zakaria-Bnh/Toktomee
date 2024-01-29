@@ -13,7 +13,7 @@ const Navbar = () => {
 
 
   return (
-    <div className="flex items-center justify-between min-h-16">
+    <header className="flex items-center justify-between min-h-16">
       <div>
         <Link href={"/"}>
           <h1 className="font-bold text-3xl text-orange-300">Toktomee</h1>
@@ -36,7 +36,7 @@ const Navbar = () => {
           </li>
         </ul>
       </nav>
-    </div>
+    </header>
   );
 };
 
