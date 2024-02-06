@@ -1,4 +1,6 @@
 import Navbar from "@/components/Navbar";
+import Providers from "@/components/Providers";
+
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
@@ -17,10 +19,15 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.className} bg-primary min-h-screen`}>
-        <div className="container">
-          <Navbar />
-          <main>{children}</main>
-        </div>
+              <Providers>  
+
+          <div className="container">
+            <Navbar />
+            <main>
+              {children}
+              </main>
+          </div>
+              </Providers>
       </body>
     </html>
   );

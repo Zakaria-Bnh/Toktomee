@@ -1,16 +1,20 @@
-'use client'
+"use client";
+
+import { signIn, useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 
-
 const Navbar = () => {
-  const [menuIsClose, setMenuIsClose] = useState(true)
+  const [menuIsClose, setMenuIsClose] = useState(true);
 
+  const { data: session } = useSession();
+
+  const signInWithGoogle = () => signIn("google")
+  
   const handleMenuIcons = () => {
-    setMenuIsClose(prev => !prev)
-  }
-
+    setMenuIsClose((prev) => !prev);
+  };
 
   return (
     <header className="flex items-center justify-between min-h-16">
@@ -20,10 +24,22 @@ const Navbar = () => {
         </Link>
       </div>
       <div className="md:hidden cursor-pointer" onClick={handleMenuIcons}>
-        <Image src={'/images/open-menu-icon.svg'} width={40} height={40} className={`${menuIsClose ? '': 'hidden'}`} alt='open menu icon'/>
-        <Image src={'/images/close-menu-icon.svg'} width={40} height={40} className={`${menuIsClose ? 'hidden': ''}`} alt='close menu icon'/>
+        <Image
+          src={"/images/open-menu-icon.svg"}
+          width={40}
+          height={40}
+          className={`${menuIsClose ? "" : "hidden"}`}
+          alt="open menu icon"
+        />
+        <Image
+          src={"/images/close-menu-icon.svg"}
+          width={40}
+          height={40}
+          className={`${menuIsClose ? "hidden" : ""}`}
+          alt="close menu icon"
+        />
       </div>
-      <nav className={`${menuIsClose? 'hidden md:block': ''}`}>
+      <nav className={`${menuIsClose ? "hidden md:block" : ""}`}>
         <ul className="flex items-center gap-4 text-gray-300">
           <li className="hover:text-wihte hover:font-medium">
             <Link href={"/"}>Vioce Chat</Link>
@@ -36,6 +52,12 @@ const Navbar = () => {
           </li>
         </ul>
       </nav>
+      <div>
+        {session && <div className="text-white">{session.user?.name}</div>}
+        <button className="text-white" onClick={() => signInWithGoogle()}>
+          sign in
+        </button>
+      </div>
     </header>
   );
 };
